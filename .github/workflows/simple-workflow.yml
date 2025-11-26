@@ -9,9 +9,9 @@ jobs:
   nomExemple:
     runs-on: ubuntu-latest
     steps:
-      - name : repository
-        run: echo $GITHUB_REPOSITORY
+      - name : Display checkout source code
+        run: echo "Récupération du code source"
 
-      - name: variable global
-        run: echo $GLOBAL_VAR
+      - name: Display and end checkout source code
+        run: echo "Fin récupération du code source"
       
