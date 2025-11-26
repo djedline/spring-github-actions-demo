@@ -1,4 +1,16 @@
 name: Test de workflow
 
 on :
+  schedule:
+    - cron: "0 * * * *"
   workflow_dispatch:
+jobs:
+  nomExemple:
+    runs-on: ubuntu-latest
+    steps:
+      - name : repository
+        run: echo $GITHUB_REPOSITORY
+
+      - name: variable global
+        run: echo $GLOBAL_VAR
+      
