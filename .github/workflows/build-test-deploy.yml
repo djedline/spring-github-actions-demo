@@ -29,4 +29,26 @@ jobs:
           key: cache-dependances
 
       - name: build package with Maven
-        run: mvn clean package -DskipTests
+        run: mvn clean package -DskipTest
+
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+ 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.0
+      - name: Setup Java Jdk
+        uses: actions/setup-java@v5.0.0
+        with:
+          java-version : 17
+          distribution: zulu
+
+      - name : Cache
+        uses: actions/cache@v4.3.0
+        with:
+          path: ${{github.workspace}}/.m2/repository
+          key: cache-dependances
+
+      - name: build package with Maven
+        run: mvn test
