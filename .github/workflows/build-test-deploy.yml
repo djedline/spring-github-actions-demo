@@ -6,8 +6,8 @@ on:
       - main
 env:
   PROJECT_VERSION: 1.0.0
-  MAVEN_OPTS: "-Dmaven.repo.local=~/dependances"
-  
+  MAVEN_OPTS: "-Dmaven.repo.local=${{github.workspace}}/.m2/repository"
+
 jobs:    
   build:
     name: Build
@@ -22,14 +22,11 @@ jobs:
           java-version : 17
           distribution: zulu
 
-      - name : cache
-        run: "sudo mkdir ~/dependances"
-
-      - name: Cache
+      - name : Cache
         uses: actions/cache@v4.3.0
         with:
-          path: "~/dependances"
-          key: "key"
+          path: ${{github.workspace}}/.m2/repository
+          key: cache-dependances
 
-      - name: build package
-        run: mvn clean package -DskipTests ${MAVEN_OPTS}
+      - name: build package with Maven
+        run: mvn clean package -DskipTests
