@@ -6,7 +6,7 @@ on:
       - main
 env:
   PROJECT_VERSION: 1.0.0
-  MAVEN_OPTS: "-Dmaven.repo.local=/.cache/"
+  MAVEN_OPTS: "-Dmaven.repo.local=~/dependances"
   
 jobs:    
   build:
