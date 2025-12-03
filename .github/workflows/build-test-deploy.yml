@@ -29,12 +29,6 @@ jobs:
 
       - name: build package with Maven
         run: mvn clean package -DskipTests -X
-
-      - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v5.0.0
-        with:
-          name: helloword-${{env.PROJECT_VERSION}}.jar
-          path: target/helloword-1.0-SNAPSHOT.jar
           
          
   test:
@@ -59,3 +53,9 @@ jobs:
 
       - name: build package with Maven
         run: mvn test
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v5.0.0
+        with:
+          name: helloword-${{env.PROJECT_VERSION}}.jar
+          path: target/helloword-1.0-SNAPSHOT.jar
