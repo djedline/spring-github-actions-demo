@@ -59,3 +59,15 @@ jobs:
       - name: build package with Maven
         run: mvn test
         continue-on-error: true # -> positionné ici, ça permet l'execution des autres étapes du job après l'erreur et permet aux autres jobs de s'executer
+
+  deploy:
+      name: Deploy App
+      runs-on: ubuntu-latest
+      needs: test
+      steps:
+        - name: Download a Build Artifact
+          uses: actions/download-artifact@v6.0.0
+          with:
+             name: helloworld-${{env.PROJECT_VERSION}}.jar
+        - name: Deploy to Server
+          run: echo "Deploying application..."
