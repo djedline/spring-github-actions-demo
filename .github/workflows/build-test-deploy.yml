@@ -52,7 +52,7 @@ jobs:
           key: cache-dependances
 
       - name: build package with Maven
-        run: mvn test
+        run: mvn test package
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v5.0.0
