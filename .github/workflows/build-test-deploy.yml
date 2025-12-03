@@ -40,7 +40,7 @@ jobs:
     name: Run Tests
     runs-on: ubuntu-latest
     needs: build
-    continue-on-error: true
+    #continue-on-error: true -> positionné ici, ça empêche l'execution des étapes du job mais permet aux autres jobs de s'executer
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.0
@@ -58,3 +58,4 @@ jobs:
 
       - name: build package with Maven
         run: mvn test
+        continue-on-error: true # -> positionné ici, ça permet l'execution des autres étapes du job après l'erreur et permet aux autres jobs de s'executer
